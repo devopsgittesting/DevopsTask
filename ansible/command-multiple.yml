@@ -1,0 +1,27 @@
+
+---
+- name: Server Info Check Commands
+  hosts: demo  
+  become: true
+  gather_facts: yes
+  tasks:
+
+      - name: Execute Memory Check Command
+        command: free -mh
+        register: memory
+     
+      - name: Execute Disk Usages Check Command
+        command: df -hT
+        register: disk
+
+      - name: Execute Memory Check Command
+        command: uptime
+        register: uptime
+
+
+      - debug: var=memory.stdout_lines
+      - debug: var=disk.stdout_lines
+      - debug: var=uptime.stdout_lines
+       
+
+      

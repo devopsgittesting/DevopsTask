@@ -1,0 +1,9 @@
+
+---
+- name: first
+  hosts: demo  
+  become: true
+  gather_facts: yes 
+  tasks:
+          - name: Install HTTPD on Centos 7
+            action: yum name=httpd state=present 

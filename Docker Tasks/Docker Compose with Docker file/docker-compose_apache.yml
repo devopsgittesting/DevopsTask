@@ -1,0 +1,13 @@
+version: '3'
+services:
+  webapp:
+     build:
+      context: ./apachetest
+      dockerfile: dockerfile.apache  #here diff is we use diff dockerfile name that why use dockerfile keyword 
+     container_name: apacheserver   # name of container 
+     image: apachetest:1            #image name with tag
+     ports:                         #run container on 80
+      - 80:80
+     restart: always                 # when container stop it will start automactically
+     volumes:  
+      - /var/www:/var/www/html          #persist data inside volume

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  one:
+    build:
+     context: ./project # build -t run this command inside ./project folder Dockerfile present inside that folder
+    image: testoneimg   #image name   
+    ports:
+     - "8081-8095:80"
+  two:
+    build:
+     context: ./project2
+    image: testtwoimg
+    

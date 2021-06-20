@@ -1,0 +1,9 @@
+version: '3'
+services:
+  webapp:
+     image: nginx
+     ports:                              #run container on 80
+       - 80:80
+     restart: always                 # when container stop it will start automactically
+     volumes:  
+       - webdata:/usr/share/nginx/html

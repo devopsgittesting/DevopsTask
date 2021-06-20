@@ -1,0 +1,9 @@
+---
+- name: Restart httpd service
+  hosts: demo
+  become: true
+  gather_facts: yes
+  tasks:
+          - name: Restart HTTPD on Centos 7
+            action: service name=httpd state=restarted
+            

@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  demoweb:
+   image: nginx
+   ports:
+     - 89:89
+   volumes:
+     - /tmp:/usr/share/nginx/html
+   deploy:
+    mode: replicated
+    replicas: 2
+   healthcheck:
+     test: ls
+     interval: 10s
+     timeout: 10s
+     retries: 3
+     start_period: 10s

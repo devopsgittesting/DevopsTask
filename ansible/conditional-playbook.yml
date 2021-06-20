@@ -1,0 +1,14 @@
+
+---
+- name: Conditional playbook
+  hosts: demo  
+  become: true
+  gather_facts: yes 
+  tasks:
+          - name: Install httpd on Debian
+            command: yum -y install apache2
+            when: ansible_os_family == "Debian"
+          - name: Install HTTPD on Centos 7
+            command: yum -y install httpd
+            when: ansible_os_family == "RedHat"
+

@@ -1,0 +1,56 @@
+
+--- #Menu Program System Information
+ - name: "System Info"
+   hosts: demo
+   become: true
+   
+   vars_prompt: 
+     - name: application
+
+       prompt: "choose one option?\n1- RAM\n2- Processors\n3- Disk Usages\n4- TimeZone\n5- List of Open Port\n6- Server Load\n"
+       private: no
+
+   tasks: 
+     - 
+       name: RAM
+       shell: free -mh
+       when: application == '1'
+       register: output
+     
+     -
+       name:
+       shell: nproc
+       when: application == '2'
+       register: pro
+
+     -
+       name: Disk Usages
+       shell: df -hT
+       when: application == '3'
+       register: disk
+ 
+     -
+       name: Time Zone
+       shell: timedatectl | grep "Time zone"
+       when: application == '4'
+       register: zone
+
+      
+     - 
+       name: List Of Open Ports
+       shell: netstat -tunlp
+       when: application == '5'
+       register: port
+
+     
+     -
+       name: Server UpTime
+       shell: uptime
+       when: application == '6'
+       register: uptime
+  
+     - debug: var=output.stdout_lines
+     - debug: var=pro.stdout_lines 
+     - debug: var=disk.stdout_lines
+     - debug: var=zone.stdout_lines
+     - debug: var=port.stdout_lines

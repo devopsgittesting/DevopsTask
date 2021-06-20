@@ -1,0 +1,1 @@
+Docker compose file define two services one nginx server second mysql server 

@@ -1,0 +1,23 @@
+
+#Check Given IP is Valid or Not
+---
+ - hosts: demo
+   become: true
+   vars_prompt:
+     - name: ipaddress
+       prompt: Enter IP Address to check
+       private: no
+       register: ip
+   vars:
+         first: '{{ ipaddress.split(".")[0] | lower }}'
+         second: '{{ ipaddress.split(".")[1] | lower }}'
+         third: '{{ ipaddress.split(".")[2] | lower }}'
+         four: '{{ ipaddress.split(".")[3] | lower }}'
+         net: 255
+         test: true
+   tasks:
+
+     - debug:
+         msg: "Invalid Ip Address : {{ ipaddress }} "
+       when: "{{ first }} > {{ net }} or {{ second }} > {{ net }} or {{ third }} > {{ net }} or {{ four }} > {{ net }}"
+
