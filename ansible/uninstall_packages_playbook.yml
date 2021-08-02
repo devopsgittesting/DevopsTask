@@ -1,0 +1,17 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+
+  tasks:
+   - name: uninstall a list of packages (suitable replacement for 2.11 loop deprecation warning)
+     yum:
+      name:
+       - httpd
+       - postgresql
+       - postgresql-server
+       - wget
+       - telnet
+       - git
+      state: absent
+      update_cache: True
+

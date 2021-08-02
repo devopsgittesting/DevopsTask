@@ -1,0 +1,11 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+  vars:
+    password: redhat
+  tasks:
+    - name: add user testuser1
+      user:
+       name: "testuser1"
+       state: present
+       password: "{{ password | password_hash('sha512') }}"

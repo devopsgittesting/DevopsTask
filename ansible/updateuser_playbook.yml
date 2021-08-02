@@ -1,0 +1,11 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+  vars:
+    password: redhat
+  tasks:
+    - name: delete user testuser1
+      user:
+       name: "testuser2"
+       state: latest
+       password: "{{ password | password_hash('sha512') }}"

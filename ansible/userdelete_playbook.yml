@@ -1,0 +1,9 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+  tasks:
+    - name: delete user testuser1
+      user:
+       name: "testuser1"
+       state: absent
+       remove: yes     #delete with home directory

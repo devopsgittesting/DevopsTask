@@ -1,0 +1,17 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+
+  tasks:
+   - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
+     yum:
+      name:
+       - httpd
+       - postgresql
+       - postgresql-server
+       - wget
+       - telnet
+       - git
+      state: present
+      update_cache: True
+
