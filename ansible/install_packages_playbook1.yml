@@ -1,0 +1,10 @@
+- name: Setup Application Server
+  hosts: all
+  become: true
+
+  tasks:
+   - name: Install latest version of packages 
+     yum: name={{item}} state=latest
+     with_items: 
+       - httpd
+       - git
