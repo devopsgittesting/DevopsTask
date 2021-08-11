@@ -1,0 +1,12 @@
+---
+- name: Check Memory Usages of Client & Send Alert to Master through mail
+  hosts: all
+  become: true
+  gather_facts: yes
+  tasks:
+
+      - name: Execute memroy usages script
+        command: sh /home/ansible/memory_usages.sh
+        register: output
+       
+      - debug: msg="{{output.stdout_lines}}"
