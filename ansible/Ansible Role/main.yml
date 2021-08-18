@@ -1,1 +1,3 @@
 
+- name: install tree
+  yum: pkg=tree state=latest 

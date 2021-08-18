@@ -1,0 +1,8 @@
+#Master file for Ansible Roles
+---
+- hosts: all
+  user: ansible
+  become: true
+  connection: ssh
+  roles: 
+     - webserver
