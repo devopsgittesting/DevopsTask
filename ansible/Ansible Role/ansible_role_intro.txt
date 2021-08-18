@@ -1,0 +1,41 @@
+        Method 1
+
+Step1: Create Directory Structure 
+mkdir Roles
+cd Roles/
+mkdir -p playbook/roles/webserver/tasks
+
+
+
+Step2: Create main.yml for perform the tasks/main
+touch roles/webserver/tasks/main.yml
+vim roles/webserver/tasks/main.yml
+
+Step3: Create master.yml file in main directory
+cd playbook/
+vim master.yml
+
+Step4: Run playbook
+ansible-playbook master.yml
+
+---------------------------------
+
+Method 2
+
+create roles using below command
+
+ansible-galaxy init apache
+
+
+Default directory-
+
+/etc/ansible/roles
+
+
+Go inside role 
+
+cd /apache
+
+Default directory structure automaically created
+
+defaults  files  handlers  meta  README.md  tasks  templates  tests  vars
