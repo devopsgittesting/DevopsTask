@@ -20,7 +20,7 @@ mem_usage=`free -m | awk 'NR==2 {printf $3*100/$2}' | cut -f 1 -d "."`
           echo "mem warning!!!"
           echo "memory usages high :$mem_usage%"
           echo "Sending mail to Master Node "
-          echo "Memory usages is high $mem_usage%" | mail -s "Memory Usages Alert" ansible@docker.example.com
+          echo "Memory usages is high $mem_usage%" | mail -s "Memory Usages Alert" master@master.example.com
           echo $mem_usage memory
           exit 0 
        else
